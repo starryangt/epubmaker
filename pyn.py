@@ -157,7 +157,7 @@ def find_start_tag(soup):
             else:
                 fail += 1
                 
-            if correct > 10:
+            if correct > 4:
                 return tag
             elif fail > 2:
                 break

@@ -3,6 +3,7 @@ from PySide.QtGui import*
 import sys
 import pyn
 import epub
+import shutil
 from threading import Thread
 
 qt_app = QApplication(sys.argv)        
@@ -23,6 +24,8 @@ the fallback is to simply take all the <p> and <img> tags.
 
 It handles most blogspot weirdness, but not all. Experiment!
 
+Order of the chapters in the EPUB is determined by the order in which
+you select them, so be careful withat that.
 '''
 
 
@@ -161,7 +164,7 @@ class WebDown(QWidget):
             newEpub.addIMG(img)
         newEpub.createEpub()
         self.status.setText("Done")
-
+        shutil.rmtree('temp')
     @Slot()
     def index_url_changed(self, string):
         self.index_url = string
